@@ -16,9 +16,6 @@ extern uint8_t is_master;
 #define _SYM 1
 #define _NUM 2
 #define _FROGEXT 3
-#define _COLE 4
-#define _RAISE 5
-#define _EXT 6
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     combo_disable();
@@ -71,7 +68,7 @@ KC_BSLS,LSFT(KC_SCLN),KC_SCLN,LSFT(KC_SLSH),LSFT(KC_1),KC_SLSH,                 
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
 LSFT(KC_GRV),KC_RBRC,LSFT(KC_RBRC),LSFT(KC_0),LSFT(KC_7),LSFT(KC_8),             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                OSM(MOD_LCTL),XXXXXXX,OSM(MOD_LALT),    XXXXXXX, XXXXXXX, XXXXXXX \
+                                      OSM(MOD_LCTL),XXXXXXX,XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX \
                                       //`--------------------------'  `--------------------------'
     ),
 
@@ -81,7 +78,7 @@ LSFT(KC_GRV),KC_RBRC,LSFT(KC_RBRC),LSFT(KC_0),LSFT(KC_7),LSFT(KC_8),            
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_PPLS,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |-:------+--------+--------+--------+-------+--------|
-   KC_PMNS,LSFT(KC_3),LSFT(KC_4),LSFT(KC_5), KC_0, KC_COMM,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+KC_PMNS,LSFT(KC_3),LSFT(KC_4),LSFT(KC_5),    KC_0, KC_COMM,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                       XXXXXXX,KC_BSPC,OSM(MOD_LGUI),    XXXXXXX, XXXXXXX, XXXXXXX \
                                       //`--------------------------'  `--------------------------'
@@ -89,55 +86,26 @@ LSFT(KC_GRV),KC_RBRC,LSFT(KC_RBRC),LSFT(KC_0),LSFT(KC_7),LSFT(KC_8),            
 
     [_FROGEXT] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-    TO(_COLE), KC_WBAK, KC_HOME,   KC_UP,  KC_END, KC_WFWD,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+  TO(_QWERTY), KC_WBAK, KC_HOME,   KC_UP,  KC_END, KC_WFWD,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
    XXXXXXX,LCA(KC_TAB), KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-   XXXXXXX,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_V),OSM(MOD_LALT),            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+XXXXXXX,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_V),OSM(MOD_LALT),               XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                           OSM(MOD_LSFT),OSM(MOD_LCTL),LCTL(KC_BSPC),    XXXXXXX, XXXXXXX, XXXXXXX \
                                       //`--------------------------'  `--------------------------'
-  ),
+  )
   
-  //All keymaps under this point are my own personalized layout. If you're going to add 
-  //your own layout, don't forget to change the TO(_COLE) in _FROGEXT to whatever you name
+  //You should add these layers on to your existing keymap so you can toggle between one-handed usage
+  //and two-handed usage. Don't forget to change the TO(_QWERTY) in _FROGEXT to whatever you name
   //your default layer aside from the frogpad layers.
   
-  [_COLE] = LAYOUT( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_QUOT, KC_MINS,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-   LT(_EXT, KC_BSPC)KC_A,  KC_R,    KC_S,    KC_T,    KC_G,                         KC_K,    KC_N,    KC_E,    KC_I,    KC_O, KC_SCLN,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_TAB,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_M,    KC_H, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                   KC_LCTL,  KC_LALT, OSM(MOD_LSFT),     KC_SPC,MO(_RAISE),KC_ENT \
-                                      //`--------------------------'  `--------------------------'
-  ),
+  //Make sure to add "#include "g/keymap_combo.h"" to the top of your keymap.c and add combos.def to the keyboard folder. 
+  //Also add "VPATH  +=  keyboards/gboards/" and "COMBO_ENABLE = yes" to rules.mk."
   
-    [_RAISE] = LAYOUT( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_DEL,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_8,    KC_9,    KC_0,  KC_EQL,  KC_GRV, KC_BSLS,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    TO(_FROG),   KC_P1,   KC_P2,   KC_P3,   KC_P4,   KC_P5,                        KC_P6,   KC_P7,   KC_P8,   KC_P9,   KC_P0, KC_PSLS,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                        KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                   KC_LGUI,  OSM(MOD_LSFT), KC_BSPC,     KC_SPC, XXXXXXX, KC_ENT \
-                                      //`--------------------------'  `--------------------------'
-  ),
-  
-    [_EXT] = LAYOUT( \
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-  KC_LGUI, LCA(KC_TAB), KC_WH_U, KC_WBAK, KC_WFWD, KC_MS_U,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END,  KC_DEL, KC_SLEP,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-   XXXXXXX, LCTL(KC_A), KC_WH_D, KC_LSFT, KC_LCTL, KC_MS_D,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL,  KC_VOLU,\
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-OSM(MOD_LALT),LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_V),KC_BTN1,               KC_BTN3, KC_BTN2, KC_MS_L, KC_MS_R, KC_MUTE, KC_VOLD,\
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                          OSM(MOD_LSFT),OSM(MOD_LCTL),LCTL(KC_BSPC),     KC_SPC, XXXXXXX, KC_ENT \
-                                      //`--------------------------'  `--------------------------'
-  )
+  //If you're having trouble with the OSM modifiers include the code for individual tapping terms in this keymap. 
+  //You must also use the rules in the config.h file.
+
 };
 
 int RGB_current_mode;
