@@ -1,8 +1,8 @@
 # konomu's one handed keyboard
 
-<p>This keymap is based on the Frogpad, the concept of which was    
-    
-[first devised around April of 1997](https://patents.google.com/patent/US5793312A)
+<p>
+
+This keymap is based on the Frogpad, the concept of which was [first devised around April of 1997](https://patents.google.com/patent/US5793312A)
 by Ryozo "Ken" Tsubai and [design finalized around February of 2004](https://patents.google.com/patent/WO2005078928A1)
 by Tsubai and Linda Marroquin.</p>
 
