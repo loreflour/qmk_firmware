@@ -8,14 +8,10 @@ extern rgblight_config_t rgblight_config;
 
 extern uint8_t is_master;
 
-// Each layer gets a name for readability, which is then used in the keymap matrix below.
-// The underscores don't mean anything - you can have a layer called STUFF or any other name.
-// Layer names don't all need to be of the same length, obviously, and you can also skip them
-// entirely and just use numbers.
 #define _FROG 0
 #define _SYM 1
 #define _NUM 2
-#define _FROGEXT 3
+#define _EXT 3
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     combo_disable();
@@ -35,7 +31,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + 1250;
 		case OSL(_SYM):
             return TAPPING_TERM + 1250;
-		case OSL(_FROGNUM):
+		case OSL(_NUM):
             return TAPPING_TERM + 1250;				
         default:
             return TAPPING_TERM;
@@ -46,29 +42,30 @@ enum macro_keycodes {
   KC_SAMPLEMACRO,
 };
 
+//This is the left-handed version.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_FROG] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_ESC,    KC_F,    KC_D,    KC_N,    KC_I,    KC_G,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-LT(_FROGEXT, KC_BSPC),KC_S,KC_T,    KC_H,    KC_E,    KC_O,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+LT(_EXT, KC_BSPC),KC_S,    KC_T,    KC_H,    KC_E,    KC_O,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
 OSM(MOD_LSFT),    KC_C,    KC_W,    KC_R,    KC_A,    KC_U,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                   OSL(_FROGNUM), OSL(_SYM), KC_SPC,    XXXXXXX, XXXXXXX, XXXXXXX \
+                                       OSL(_NUM),OSL(_SYM),  KC_SPC,    XXXXXXX, XXXXXXX, XXXXXXX \
                                       //`--------------------------'  `--------------------------'
 
   ),
 
   [_SYM] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-KC_TAB,KC_LBRC,LSFT(KC_LBRC),LSFT(KC_9),LSFT(KC_2),LSFT(KC_6),                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+      KC_TAB,KC_LBRC,S(KC_LBRC), S(KC_9), S(KC_2), S(KC_6),                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-KC_BSLS,LSFT(KC_SCLN),KC_SCLN,LSFT(KC_SLSH),LSFT(KC_1),KC_SLSH,                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+   KC_BSLS,S(KC_SCLN),KC_SCLN,S(KC_SLSH), S(KC_1), KC_SLSH,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-LSFT(KC_GRV),KC_RBRC,LSFT(KC_RBRC),LSFT(KC_0),LSFT(KC_7),LSFT(KC_8),             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+   S(KC_GRV),KC_RBRC,S(KC_RBRC), S(KC_0), S(KC_7), S(KC_8),                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                      OSM(MOD_LCTL),XXXXXXX,XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX \
+                                          XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX \
                                       //`--------------------------'  `--------------------------'
     ),
 
@@ -78,33 +75,86 @@ LSFT(KC_GRV),KC_RBRC,LSFT(KC_RBRC),LSFT(KC_0),LSFT(KC_7),LSFT(KC_8),            
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_PPLS,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |-:------+--------+--------+--------+-------+--------|
-KC_PMNS,LSFT(KC_3),LSFT(KC_4),LSFT(KC_5),    KC_0, KC_COMM,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+      KC_PMNS, S(KC_3), S(KC_4), S(KC_5),    KC_0, KC_COMM,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                      XXXXXXX,KC_BSPC,OSM(MOD_LGUI),    XXXXXXX, XXXXXXX, XXXXXXX \
+                                      XXXXXXX,XXXXXXX,OSM(MOD_LGUI),    XXXXXXX, XXXXXXX, XXXXXXX \
                                       //`--------------------------'  `--------------------------'
   ),
 
-    [_FROGEXT] = LAYOUT( \
+    [_EXT] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-  TO(_QWERTY), KC_WBAK, KC_HOME,   KC_UP,  KC_END, KC_WFWD,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+  //I recommend adding a TO() that leads to your default layer to the first key in the next line. It is left blank for this purpose.
+      XXXXXXX, KC_WBAK, KC_HOME,   KC_UP,  KC_END, KC_WFWD,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
    XXXXXXX,LCA(KC_TAB), KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-XXXXXXX,LCTL(KC_Z),LCTL(KC_X),LCTL(KC_C),LCTL(KC_V),OSM(MOD_LALT),               XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+     XXXXXXX,C(KC_Z),C(KC_X),C(KC_C),C(KC_V),OSM(MOD_LALT),                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                          OSM(MOD_LSFT),OSM(MOD_LCTL),LCTL(KC_BSPC),    XXXXXXX, XXXXXXX, XXXXXXX \
+                             OSM(MOD_LSFT),OSM(MOD_LCTL),C(KC_BSPC),    XXXXXXX, XXXXXXX, XXXXXXX \
                                       //`--------------------------'  `--------------------------'
   )
+  /* This is the right-handed version.
   
-  //You should add these layers on to your existing keymap so you can toggle between one-handed usage
-  //and two-handed usage. Don't forget to change the TO(_QWERTY) in _FROGEXT to whatever you name
-  //your default layer aside from the frogpad layers.
+    [_FROG] = LAYOUT( \
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         KC_G,    KC_I,    KC_N,    KC_D,    KC_F,  KC_ESC,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         KC_O,    KC_E,    KC_H,    KC_T,    KC_S,LT(_EXT, KC_BSPC),\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         KC_U,    KC_A,    KC_R,    KC_W,    KC_C,OSM(MOD_LSFT),\    
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                          XXXXXXX, XXXXXXX, XXXXXXX,     KC_SPC,OSL(_SYM),OSL(_NUM) \
+                                      //`--------------------------'  `--------------------------'
+
+  ),
+
+  [_SYM] = LAYOUT( \
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      S(KC_6), S(KC_2), S(KC_9),S(KC_LBRC),KC_LBRC, KC_TAB,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_SLSH, S(KC_1),S(KC_SLSH),KC_SCLN,S(KC_SCLN),KC_BSLS,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      S(KC_8), S(KC_7), S(KC_0),S(KC_RBRC),KC_RBRC,S(KC_GRV),\
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                          XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX \
+                                      //`--------------------------'  `--------------------------'
+    ),
+
+  [_NUM] = LAYOUT( \
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_DOT,    KC_9,    KC_8,    KC_7,    KC_6, KC_PEQL,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         KC_5,    KC_4,    KC_3,    KC_2,    KC_1, KC_PPLS,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_COMM,    KC_0, S(KC_5), S(KC_4), S(KC_3), KC_PMNS,\
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                          XXXXXXX, XXXXXXX, XXXXXXX, OSM(MOD_LGUI),XXXXXXX,XXXXXXX \
+                                      //`--------------------------'  `--------------------------'
+  ),
+
+    [_EXT] = LAYOUT( \
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+    //I recommend adding a TO() that leads to your default layer to the last key in the next line. It is left blank for this purpose.
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_WFWD,  KC_END,   KC_UP, KC_HOME, KC_WBAK, XXXXXXX,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_DEL, KC_RGHT, KC_DOWN, KC_LEFT,LCA(KC_TAB),XXXXXXX,\
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                OSM(MOD_LALT), C(KC_V), C(KC_C), C(KC_X), C(KC_Z), XXXXXXX,\
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                          XXXXXXX, XXXXXXX, XXXXXXX, C(KC_BSPC),OSM(MOD_LCTL),OSM(MOD_LSFT) \
+                                      //`--------------------------'  `--------------------------'
+  )
+  */
+  
+  //You should add these layers on to your existing keymap so you can toggle between one-handed usage and two-handed usage. Don't 
+  //forget to change the first keycode in _EXT to whatever you name your default layer aside from the frogpad layers. If you add 
+  //a TO(_FROG) somewhere on your default layer, you can easily switch between the two.
   
   //Make sure to add "#include "g/keymap_combo.h"" to the top of your keymap.c and add combos.def to the keyboard folder. 
   //Also add "VPATH  +=  keyboards/gboards/" and "COMBO_ENABLE = yes" to rules.mk."
   
   //If you're having trouble with the OSM modifiers include the code for individual tapping terms in this keymap. 
-  //You must also use the rules in the config.h file.
+  //You must also use the last six 'define's in the config.h file.
 
 };
 
