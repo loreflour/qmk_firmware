@@ -4,7 +4,8 @@
 
 This keymap is based on the Frogpad, the concept of which was [first devised around April of 1997](https://patents.google.com/patent/US5793312A)
 by Ryozo "Ken" Tsubai and [design finalized around February of 2004](https://patents.google.com/patent/WO2005078928A1)
-by Tsubai and Linda Marroquin.</p>
+by Tsubai and Linda Marroquin.</p> 
+<p>Below is my own version of the Frogpad layout, which is the default of this keymap.</p>
 
 <p align="center">
     <img src="https://i.imgur.com/VWQMUk7.png" alt="default layout" width="500">
@@ -15,9 +16,9 @@ by Tsubai and Linda Marroquin.</p>
 * Significantly improved same finger bigram frequency. (Less S-bigrams)
 * Significantly improved neighbor finger bigram frequency. (More N-bigrams)
 * Slight improvement in surface layer letter frequency. (Moved G and C to surface layer, in exchange for P and Y)
-	*This means you'll need to chord letters less.
+	* This means you'll need to chord letters less.
 * In the case of same finger bigrams, increased the amount of downward motions, which are more comfortable.
-	*For example, swapping A and I was an efficient change because 'ea' and 'ie' are both more common than 'ae' and 'ei'.
+	* For example, swapping A and I was an efficient change because 'ea' and 'ie' are both more common than 'ae' and 'ei'.
 
 ![improvement](https://i.imgur.com/auVktOh.png)
 
