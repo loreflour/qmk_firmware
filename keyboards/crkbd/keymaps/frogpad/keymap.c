@@ -21,23 +21,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case OSM(MOD_LSFT):
-            return TAPPING_TERM + 1250;
-		case OSM(MOD_LCTL):
-            return TAPPING_TERM + 1250;
-		case OSM(MOD_LALT):
-            return TAPPING_TERM + 1250;
-		case OSL(_SYM):
-            return TAPPING_TERM + 1250;
-		case OSL(_NUM):
-            return TAPPING_TERM + 1250;				
-        default:
-            return TAPPING_TERM;
-    }
-}
-
 enum macro_keycodes {
   KC_SAMPLEMACRO,
 };
@@ -153,7 +136,6 @@ OSM(MOD_LSFT),    KC_C,    KC_W,    KC_R,    KC_A,    KC_U,                     
   //Make sure to add "#include "g/keymap_combo.h"" to the top of your keymap.c and add combos.def to the keyboard folder. 
   //Also add "VPATH  +=  keyboards/gboards/" and "COMBO_ENABLE = yes" to rules.mk."
   
-  //If you're having trouble with the OSM modifiers include the code for individual tapping terms in this keymap. 
   //You must also use the last six 'define's in the config.h file.
 
 };
