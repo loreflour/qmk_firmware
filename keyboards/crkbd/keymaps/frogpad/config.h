@@ -45,7 +45,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define FORCE_NKRO
 #define ONESHOT_TIMEOUT 8000
-#define TAPPING_TERM 100
+#define TAPPING_TERM 900
+// #define HOLD_ON_OTHER_KEY_PRESS 
+// This isn't necessary, but because permissive holds are broken with layer taps, I recommend building this keymap with sigprof's fork,
+// which has a feature (Hold on other key press) that fixes it. https://github.com/sigprof/qmk_firmware
 #define PERMISSIVE_HOLD
 #define RETRO_TAPPING
 #define COMBO_COUNT 16
