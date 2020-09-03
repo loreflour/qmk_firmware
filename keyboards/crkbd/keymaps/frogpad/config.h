@@ -44,7 +44,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #define FORCE_NKRO
-#define TAPPING_TERM 100
+#define TAPPING_TERM 600 //This term must be over 500, or layer taps may not work correctly.
 #define TAPPING_TERM_PER_KEY
 #define RETRO_TAPPING
 #define COMBO_COUNT 16
