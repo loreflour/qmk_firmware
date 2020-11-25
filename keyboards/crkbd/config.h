@@ -26,3 +26,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define NO_ACTION_MACRO
 #define NO_ACTION_FUNCTION
+
+#define FORCE_NKRO
+#define ONESHOT_TIMEOUT 8000
+#define TAPPING_TERM 300
+#define HOLD_ON_OTHER_KEY_PRESS
+#define RETRO_TAPPING
+#define PERMISSIVE_HOLD
+#define MOUSEKEY_MAX_SPEED 10
+#define MOUSEKEY_TIME_TO_MAX 14
